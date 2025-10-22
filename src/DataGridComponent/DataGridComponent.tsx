@@ -5,7 +5,7 @@ import {type Employee, employees} from './data.ts';
 const calculateCellValue = (data: Employee) => [data.Title, data.FirstName, data.LastName].join(' ');
 
 
-const DataGridComponent = () => {
+export const DataGridComponent = () => {
     return (
         <DataGrid
             id="gridContainer"
@@ -46,5 +46,3 @@ const DataGridComponent = () => {
         </DataGrid>
     );
 };
-
-export default DataGridComponent;
