@@ -5,7 +5,7 @@ export default defineConfig({
     plugins: [react()],
     build: {
         lib: {
-            entry: 'src/index.js',
+            entry: 'src/index.ts',
             name: 'MyDemo',       // sẽ tạo window.MFECore
             fileName: () => `my-demo.umd.js`,  // dist/mfe-core.umd.js
             formats: ['umd'],
