@@ -1,13 +1,17 @@
-import DataGridComponent from "./DataGridComponent/DataGridComponent.tsx";
+import DataGridComponent from "./DataGridComponent/DataGridComponent";
+
+export {DataGridComponent};
 
 declare global {
     interface Window {
         MyDemo: {
-            DataGridComponent: typeof DataGridComponent
+            DataGridComponent: typeof DataGridComponent;
         };
     }
 }
 
-window.MyDemo = {
-    DataGridComponent
-};
+if (typeof window !== "undefined") {
+    window.MyDemo = {
+        DataGridComponent,
+    };
+}
