@@ -1,48 +1,22 @@
-import DataGrid, {Column, ColumnFixing} from "devextreme-react/data-grid";
+import BaseDataGrid from "../components/BaseDataGrid.tsx";
 
-import {type Employee, employees} from './data.ts';
-
-const calculateCellValue = (data: Employee) => [data.Title, data.FirstName, data.LastName].join(' ');
-
-
-export const DataGridComponent = () => {
+export const DataGridComponent = ({dataTable}: { dataTable: any }) => {
+    const columns = [
+        {dataField: "loaiGiayChungNhan", caption: "Loại giấy chứng nhận"},
+        {dataField: "soGiayChungNhan", caption: "Số giấy chứng nhận"},
+        {dataField: "ngayCap", caption: "Ngày cấp"},
+        {dataField: "ngayHetHan", caption: "Ngày hết hạn"},
+        {dataField: "coQuanCap", caption: "Cơ quan cấp"},
+        {dataField: "hinhThuc", caption: "Hình thức"},
+        {dataField: "dinhKem", caption: "Đính kèm"},
+    ];
     return (
-        <DataGrid
-            id="gridContainer"
-            dataSource={employees}
-            keyExpr="ID"
-            allowColumnReordering={true}
-            columnAutoWidth={true}
-            showBorders={true}
-        >
-            <ColumnFixing enabled={true}/>
-            <Column
-                caption="Employee"
-                fixed={true}
-                calculateCellValue={calculateCellValue}
-            />
-            <Column
-                dataField="Position"
-                alignment="right"
-                fixed={true}
-            />
-            <Column dataField="Address"/>
-            <Column dataField="City"/>
-            <Column dataField="Zipcode"/>
-            <Column dataField="State"/>
-            <Column dataField="Department"/>
-            <Column
-                dataField="BirthDate"
-                dataType="date"
-            />
-            <Column
-                dataField="HireDate"
-                dataType="date"
-            />
-            <Column dataField="HomePhone"/>
-            <Column dataField="MobilePhone"/>
-            <Column dataField="Email"/>
-            <Column dataField="Skype"/>
-        </DataGrid>
+        <BaseDataGrid
+            dataSource={dataTable}
+            columns={columns}
+            selectionMode="single"
+            onRowClick={(e) => console.log("Clicked:", e.data)}
+            toolbarExtra={<button onClick={() => alert("Add User")}>Add</button>}
+        />
     );
 };
