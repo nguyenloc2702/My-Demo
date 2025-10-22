@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
+    "build:umd": "cross-env BUILD_UMD=true vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preview:umd": "cross-env BUILD_UMD=true vite preview",
+    "start": "npm run build && npm run preview",
+    "start:umd": "npm run build:umd && npm run preview:umd"
   },
   "dependencies": {
     "devextreme": "^25.1.5",
