@@ -81,8 +81,8 @@ const users = [
     },
 ];
 
-export default function CoSoNuoiYenForm() {
-    const [visible, setVisible] = useState(true);
+export default function CoSoNuoiYenForm({openModal, setOpenModal}: { openModal: boolean, setOpenModal: any }) {
+    // const [visible, setVisible] = useState(initVisible);
     const [formData, setFormData] = useState({
         tenChuCoSo: "",
         soCmnd: "",
@@ -247,6 +247,12 @@ export default function CoSoNuoiYenForm() {
         </Form>
     );
 
+    const renderGiayChungNhan = () => (
+        <>
+            <DataGridComponent dataTable={users}/>
+        </>
+    )
+
     const handleMapClick = (e) => {
         const coords = e.j.event.latLng;
         setFormData({
@@ -259,8 +265,8 @@ export default function CoSoNuoiYenForm() {
     return (
         <div>
             <Popup
-                visible={visible}
-                onHiding={() => setVisible(false)}
+                visible={openModal}
+                onHiding={() => setOpenModal(false)}
                 wrapperAttr={{class: "custom-popup"}}
                 width="90%"
                 height="90%"
@@ -270,7 +276,7 @@ export default function CoSoNuoiYenForm() {
                         <span>Thêm mới cơ sở nuôi yến</span>
                         <span
                             style={{cursor: "pointer"}}
-                            onClick={() => setVisible(false)}
+                            onClick={() => setOpenModal(false)}
                         >
               ✕
             </span>
@@ -317,10 +323,10 @@ export default function CoSoNuoiYenForm() {
                                                 fontSize: 16,
                                             }}
                                         >
-                      tdfsd
+                      Giấy chứng nhận
                     </span>
                                     ),
-                                    render: <DataGridComponent dataTable={users}/>,
+                                    render: renderGiayChungNhan,
                                 },
                             ]}
                             itemTitleRender={(item) => item.title}

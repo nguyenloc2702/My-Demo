@@ -72,7 +72,7 @@
 
 .dx-texteditor-input {
     color: #d3cfc9 !important;
-    background-color: #1a1a1a !important;
+    /*background-color: #1a1a1a !important;*/
 }
 
 .dx-invalid .dx-texteditor-input {
