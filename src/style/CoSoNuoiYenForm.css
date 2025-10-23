@@ -1,0 +1,92 @@
+/* Popup header */
+.popup-header {
+    background: #007000;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    width: 100%;
+    margin: 0;
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+/* Nút đóng header */
+.popup-close {
+    cursor: pointer;
+    padding: 0 12px;
+}
+
+/* Gỡ padding mặc định popup header & nội dung */
+.custom-popup .dx-overlay-content,
+.custom-popup .dx-popup-content,
+.custom-popup .dx-popup-title {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+}
+
+/* Đảm bảo header tràn sát mép popup */
+.custom-popup .dx-overlay-content {
+    top: 0 !important;
+}
+
+/* Popup content area */
+.custom-popup .dx-popup-content {
+    background-color: #181a1b !important;
+    color: #fff !important;
+    box-shadow: none !important;
+}
+
+/* Accordion styles */
+.accordion-wrapper {
+    background-color: #181a1b;
+    padding: 10px;
+}
+
+.accordion-wrapper .dx-accordion,
+.accordion-wrapper .dx-accordion-item,
+.accordion-wrapper .dx-accordion-item-content {
+    background-color: #181a1b;
+    border: none;
+    box-shadow: none;
+}
+
+.accordion-title {
+    color: #77f271;
+    font-weight: bold;
+}
+
+/* Form field appearance */
+.dx-texteditor {
+    border: 1px solid #555 !important;    
+    background-color: transparent !important;
+}
+
+.dx-field-item-label-text {
+    color: #d3cfc9 !important;
+}
+
+.dx-texteditor-input {
+    color: #d3cfc9 !important;
+    background-color: #1a1a1a !important;
+}
+
+.dx-invalid .dx-texteditor-input {
+    border-color: #ff4444 !important;
+}
+
+.dx-invalid-message {
+    color: #ff4444 !important;
+}
+
+/* Button group */
+.btn-group {
+    margin: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}

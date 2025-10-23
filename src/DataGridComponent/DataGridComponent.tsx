@@ -15,7 +15,7 @@ const DataGridComponent = () => {
             columnAutoWidth={true}
             showBorders={true}
         >
-            <ColumnFixing enabled={true}/>
+            <ColumnFixing enabled={true} />
             <Column
                 caption="Employee"
                 fixed={true}
