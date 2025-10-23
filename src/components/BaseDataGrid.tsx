@@ -10,6 +10,7 @@ import {
     Item as ToolbarItem,
     Export,
     Selection,
+    Editing,
 } from "devextreme-react/data-grid";
 
 interface BaseDataGridProps {
@@ -17,10 +18,11 @@ interface BaseDataGridProps {
     columns: {
         dataField: string;
         caption?: string;
-        width?: number,
-        cellRender?: any,
-        editCellRender?: any,
-        headerCellRender?: any
+        width?: number;
+        cellRender?: any;
+        editCellTemplate?: any; // Corrected from editCellRender
+        headerCellRender?: any;
+        allowEditing?: boolean;
     }[];
     keyExpr?: string;
     height?: number | string;
@@ -29,6 +31,7 @@ interface BaseDataGridProps {
     selectionMode?: "none" | "single" | "multiple";
     onRowClick?: (e: any) => void;
     toolbarExtra?: React.ReactNode;
+    allowEditing?: boolean; // Added to toggle editing
 }
 
 const BaseDataGrid: React.FC<BaseDataGridProps> = ({
@@ -48,6 +51,7 @@ const BaseDataGrid: React.FC<BaseDataGridProps> = ({
             keyExpr={keyExpr}
             showBorders={true}
             height={height}
+            scrolling={{columnRenderingMode: "virtual"}}
             onRowClick={onRowClick}
             allowColumnResizing={true}
             allowColumnReordering={true}
@@ -60,13 +64,19 @@ const BaseDataGrid: React.FC<BaseDataGridProps> = ({
             }}
         >
             <Selection mode={selectionMode}/>
+            {/*{allowEditing && (*/}
+            {/*    <Editing*/}
+            {/*        mode="cell"*/}
+            {/*        allowUpdating={true}*/}
+            {/*    />*/}
+            {/*)}*/}
 
-            {/*<SearchPanel visible={true} highlightCaseSensitive={false}/>*/}
-            {/*<FilterRow visible={true}/>*/}
+            {/*<SearchPanel visible={true} highlightCaseSensitive={false} />*/}
+            {/*<FilterRow visible={true} />*/}
 
             {showIndex && (
                 <Column
-                    caption="#"
+                    caption="STT"
                     width={60}
                     alignment="center"
                     cellRender={(e) => e.rowIndex + 1}
@@ -74,9 +84,14 @@ const BaseDataGrid: React.FC<BaseDataGridProps> = ({
             )}
 
             {columns.map((col) => (
-                <Column key={col.dataField} {...col} cellRender={col.cellRender}
-                        editCellRender={col.editCellRender}
-                        headerCellRender={col.headerCellRender}/>
+                <Column
+                    key={col.dataField}
+                    {...col}
+                    allowEditing={col.allowEditing}
+                    cellRender={col.cellRender}
+                    editCellTemplate={col.editCellTemplate}
+                    headerCellRender={col.headerCellRender}
+                />
             ))}
 
             <Paging defaultPageSize={pageSize}/>
