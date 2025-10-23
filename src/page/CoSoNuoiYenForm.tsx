@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "devextreme/dist/css/dx.light.css";
 import "../style/CoSoNuoiYenForm.css";
+import DataGridComponent from "../DataGridComponent/DataGridComponent";
 import { Form, GroupItem, SimpleItem } from "devextreme-react/form";
 import { Button } from "devextreme-react/button";
 import { Accordion } from "devextreme-react/accordion";
@@ -233,6 +234,20 @@ export default function CoSoNuoiYenForm() {
                     </span>
                   ),
                   render: renderDiaDiemNuoiYen,
+                },
+                {
+                  title: (
+                    <span
+                      style={{
+                        color: "#77F271",
+                        fontWeight: "bold",
+                        fontSize: 16,
+                      }}
+                    >
+                      Giấy chứng nhận
+                    </span>
+                  ),
+                  render: DataGridComponent,
                 },
               ]}
               itemTitleRender={(item) => item.title}
