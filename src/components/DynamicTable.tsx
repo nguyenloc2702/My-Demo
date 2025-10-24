@@ -214,6 +214,24 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
 
         {/* Các cột động */}
         {columns.map((col) => {
+          if (col.type === "select") {
+            return (
+              <Column
+                alignment="center"
+                key={col.dataField}
+                caption={col.caption}
+                dataField={col.dataField}
+                width={col.width}
+                lookup={{
+                  dataSource: col.dataSource,
+                  valueExpr: "id",
+                  displayExpr: "name",
+                }}
+                allowSorting={false}
+                allowFiltering={false}
+              />
+            );
+          }
           return (
             <Column
               alignment="center"
@@ -221,30 +239,26 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
               caption={col.caption}
               dataField={col.dataField}
               width={col.width}
-              editCellRender={(cell) => renderCell(cell, col)}
+              cellRender={(cell) => renderCell(cell, col)}
               allowSorting={false}
               allowFiltering={false}
             />
           );
         })}
-        <div
-          onMouseDown={(e) => e.stopPropagation()} // ngăn event lan ra DataGrid
-        >
-          {/* Cột thao tác (xóa) */}
-          <Column
-            alignment="center"
-            caption="Thao tác"
-            width={100}
-            cellRender={(cell) => (
-              <button
-                className="dx-button dx-button-danger"
-                onClick={() => handleDelete(cell.data.id)}
-              >
-                Xóa
-              </button>
-            )}
-          />
-        </div>
+        {/* Cột thao tác (xóa) */}
+        <Column
+          alignment="center"
+          caption="Thao tác"
+          width={100}
+          cellRender={(cell) => (
+            <button
+              className="dx-button dx-button-danger"
+              onClick={() => handleDelete(cell.data.id)}
+            >
+              Xóa
+            </button>
+          )}
+        />
       </DataGrid>
 
       {/* Nút thêm dòng */}
