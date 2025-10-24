@@ -1,11 +1,24 @@
 import "./App.css";
 import "devextreme/dist/css/dx.light.css";
-import CoSoNuoiYenForm from "./page/CoSoNuoiYenForm.tsx";
+import { CoSoNuoiYen } from "./pages/CoSoNuoiYen";
+import TheoDoiCongTacKDDV from "./pages/TheoDoiCongTacKDDV";
 
-function App() {
+function App({
+  runQuery,
+  model,
+  updateModel,
+}: {
+  runQuery: (query: any) => void;
+  model: Record<string, any>;
+  updateModel?: (payload: { body: Record<string, any> }) => void;
+}) {
   return (
     <>
-      <CoSoNuoiYenForm />
+      <TheoDoiCongTacKDDV
+        runQuery={runQuery}
+        model={model}
+        updateModel={updateModel}
+      />
     </>
   );
 }

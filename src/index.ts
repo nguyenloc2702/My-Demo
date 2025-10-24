@@ -1,13 +1,6 @@
-import DataGridComponent from "./DataGridComponent/DataGridComponent.tsx";
+import React from "react";
+import ReactDOM from "react-dom";
+import {CoSoNuoiYen} from "./pages/CoSoNuoiYen.tsx";
+import { DataGridComponent } from "./components/DataGridComponent.tsx";
 
-declare global {
-    interface Window {
-        MyDemo: {
-            DataGridComponent: typeof DataGridComponent
-        };
-    }
-}
-
-window.MyDemo = {
-    DataGridComponent
-};
+export {React, ReactDOM, DataGridComponent, CoSoNuoiYen};

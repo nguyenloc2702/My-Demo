@@ -1,24 +1,31 @@
-import { defineConfig } from 'vite';
+import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react';
+import * as path from "node:path";
 
 export default defineConfig({
-  plugins: [react()],
-  build: {
-    lib: {
-      entry: 'src/index.js',
-      name: 'MyDemo',       // sẽ tạo window.MFECore
-      fileName: 'my-demo',  // dist/mfe-core.umd.js
-      formats: ['umd'],
-    },
-    rollupOptions: {
-      // React/ReactDOM external, host app sẽ cung cấp
-      external: ['react', 'react-dom'],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
+    plugins: [react()],
+    build: {
+        lib: {
+            entry: path.resolve(__dirname, 'src/index.ts'),
+            name: 'MFECore',
+            fileName: () => 'mfe-core-0.2.umd.js',
+            formats: ['umd'],
         },
-      },
+        outDir: 'dist-umd',
+        rollupOptions: {
+            external: ['react', 'react-dom'],
+            output: {
+                globals: {
+                    react: 'React',
+                    'react-dom': 'ReactDOM',
+                }
+            }
+        },
+        sourcemap: false,
+        minify: true,
     },
-  },
+    define: {
+        'process.env.NODE_ENV': '"production"',
+        'process.env': '{}'
+    }
 });
