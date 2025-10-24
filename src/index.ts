@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {DataGridComponent} from "./DataGridComponent/DataGridComponent.tsx";
-import {CoSoNuoiYenPage} from "./page/CoSoNuoiYenPage.tsx";
+import {CoSoNuoiYen} from "./pages/CoSoNuoiYen.tsx";
+import { DataGridComponent } from "./components/DataGridComponent.tsx";
 
-export {React, ReactDOM, DataGridComponent, CoSoNuoiYenPage};
+export {React, ReactDOM, DataGridComponent, CoSoNuoiYen};

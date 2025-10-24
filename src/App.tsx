@@ -1,15 +1,26 @@
-import './App.css'
-import 'devextreme/dist/css/dx.light.css';
+import "./App.css";
+import "devextreme/dist/css/dx.light.css";
+import { CoSoNuoiYen } from "./pages/CoSoNuoiYen";
+import TheoDoiCongTacKDDV from "./pages/TheoDoiCongTacKDDV";
 
-import CoSoNuoiYenPage from "./page/CoSoNuoiYenPage.tsx";
-
-function App() {
-
-    return (
-        <>
-            <CoSoNuoiYenPage/>
-        </>
-    )
+function App({
+  runQuery,
+  model,
+  updateModel,
+}: {
+  runQuery: (query: any) => void;
+  model: Record<string, any>;
+  updateModel?: (payload: { body: Record<string, any> }) => void;
+}) {
+  return (
+    <>
+      <TheoDoiCongTacKDDV
+        runQuery={runQuery}
+        model={model}
+        updateModel={updateModel}
+      />
+    </>
+  );
 }
 
-export default App
+export default App;
