@@ -2,6 +2,7 @@ body {
     padding: 10px;
 }
 
+
 .dx-datagrid {
     height: auto;
 }
@@ -14,11 +15,16 @@ body {
     font-weight: bold;
     color: #ccc;
     margin-bottom: 8px;
+    text-align: left;
 }
 
 .add-button-container {
     text-align: right;
     margin-top: 15px;
+}
+
+.dx-button {
+    padding: 5px 15px;
 }
 
 .dx-button.dx-button-danger {
@@ -28,4 +34,4 @@ body {
     padding: 4px 8px;
     border-radius: 6px;
     cursor: pointer;
-}
+}  
