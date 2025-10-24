@@ -1,6 +1,5 @@
-// import { DynamicTable } from "../components";
 import "../assets/styles/TheoDoiCongTacKDDV.css";
-import DynamicTable from "../components/DynamicTable";
+import { DynamicTable } from "../components";
 
 export default function TheoDoiCongTacKDDV({
   runQuery,
@@ -29,54 +28,49 @@ export default function TheoDoiCongTacKDDV({
 
   return (
     <div>
-      <form>
-        <DynamicTable
-          title="Danh sách mẫu kiểm dịch"
-          model={model}
-          fieldName="kiemDich"
-          updateModel={updateModel}
-          addLabel="Thêm mẫu"
-          columns={[
-            {
-              dataField: "loaiDongVat",
-              caption: "Loại động vật (*)",
-              type: "select",
-              dataSource: loaiDongVatData,
-            },
-            {
-              dataField: "loaiMau",
-              caption: "Loại mẫu (*)",
-              type: "select",
-              dataSource: loaiMauData,
-            },
-            { dataField: "soLuong", caption: "Số lượng (*)", type: "number" },
-            { dataField: "file", caption: "Tệp đính kèm", type: "file" },
-          ]}
-        />
-      </form>
-
-      <form>
-        <DynamicTable
-          title="Danh sách địa chỉ nơi đến"
-          model={model}
-          fieldName="diaChiNoiDen"
-          updateModel={updateModel}
-          addLabel="Thêm địa chỉ"
-          columns={[
-            {
-              dataField: "diaChi",
-              caption: "Địa chỉ nơi đến (*)",
-              type: "text",
-            },
-            { dataField: "tenChuTrai", caption: "Tên chủ trại", type: "text" },
-            {
-              dataField: "soDienThoai",
-              caption: "Số điện thoại",
-              type: "text",
-            },
-          ]}
-        />
-      </form>
+      <DynamicTable
+        title="Danh sách mẫu kiểm dịch"
+        model={model}
+        fieldName="kiemDich"
+        updateModel={updateModel}
+        addLabel="Thêm mẫu"
+        columns={[
+          {
+            dataField: "loaiDongVat",
+            caption: "Loại động vật (*)",
+            type: "select",
+            dataSource: loaiDongVatData,
+          },
+          {
+            dataField: "loaiMau",
+            caption: "Loại mẫu (*)",
+            type: "select",
+            dataSource: loaiMauData,
+          },
+          { dataField: "soLuong", caption: "Số lượng (*)", type: "number" },
+          { dataField: "file", caption: "Tệp đính kèm", type: "file" },
+        ]}
+      />
+      <DynamicTable
+        title="Danh sách địa chỉ nơi đến"
+        model={model}
+        fieldName="diaChiNoiDen"
+        updateModel={updateModel}
+        addLabel="Thêm địa chỉ"
+        columns={[
+          {
+            dataField: "diaChi",
+            caption: "Địa chỉ nơi đến (*)",
+            type: "text",
+          },
+          { dataField: "tenChuTrai", caption: "Tên chủ trại", type: "text" },
+          {
+            dataField: "soDienThoai",
+            caption: "Số điện thoại",
+            type: "text",
+          },
+        ]}
+      />
       <button
         id="btnLuu"
         onClick={handleSave}
